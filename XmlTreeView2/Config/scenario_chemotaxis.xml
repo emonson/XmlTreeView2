@@ -1,0 +1,77 @@
+<?xml version="1.0"?>
+<SimConfiguration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <description>Whole config with scenario and parameters combined</description>
+  <scenario>
+    <description>Test configuration scenario2 with combined scenario and parameters</description>
+    <experiment>
+      <duration>260</duration>
+      <timestep>3</timestep>
+    </experiment>
+    <environment>
+      <extent_x>400</extent_x>
+      <extent_y>400</extent_y>
+      <extent_z>0</extent_z>
+    </environment>
+    <solfacs>
+      <Solfac>
+        <solfac_name>cxcl13</solfac_name>
+        <solfac_type>Linear X gradient</solfac_type>
+        <min>50</min>
+        <max>100</max>
+      </Solfac>
+    </solfacs>
+    <cellsets>
+      <CellSet>
+        <cell_name>tcell</cell_name>
+        <cell_type>Motile Cell</cell_type>
+        <number>50</number>
+        <region>
+          <min_x>100</min_x>
+          <max_x>300</max_x>
+          <min_y>100</min_y>
+          <max_y>300</max_y>
+          <min_z>0</min_z>
+          <max_z>0</max_z>
+        </region>
+      </CellSet>
+      <CellSet>
+        <cell_name>bcell</cell_name>
+        <cell_type>Motile Cell</cell_type>
+        <number>50</number>
+        <region>
+          <min_x>100</min_x>
+          <max_x>300</max_x>
+          <min_y>100</min_y>
+          <max_y>300</max_y>
+          <min_z>0</min_z>
+          <max_z>0</max_z>
+        </region>
+      </CellSet>
+    </cellsets>
+  </scenario>
+  <parameters>
+    <description>Simulation parameters</description>
+    <force>
+      <delta>12.5</delta>
+      <phi1>0.05</phi1>
+      <phi2>0.03</phi2>
+    </force>
+    <motilecell>
+      <locomotor>
+        <gamma>1.3</gamma>
+        <sigma>5.5</sigma>
+        <zeta>0.05</zeta>
+        <chi>28</chi>
+      </locomotor>
+      <ck_receptor>
+        <kappa>1</kappa>
+        <pi>0.1</pi>
+        <tau>0.0006</tau>
+        <delta>0.01</delta>
+      </ck_receptor>
+      <ck_receptor_init>
+        <u>6</u>
+      </ck_receptor_init>
+    </motilecell>
+  </parameters>
+</SimConfiguration>

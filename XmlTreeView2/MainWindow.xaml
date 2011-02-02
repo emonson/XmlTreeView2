@@ -1,0 +1,43 @@
+﻿<Window x:Class="XmlTreeView2.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="550" Width="300">
+    <Window.Resources>
+        <XmlDataProvider x:Key="ScenarioConfigXML"
+                         Source="Config/scenario_chemotaxis.xml"
+                         XPath="/"/>
+    </Window.Resources>
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="300" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="30" />
+        </Grid.RowDefinitions>
+        <TreeView x:Name="parameter_tree" Grid.Row="0" SelectedItemChanged="parameter_tree_SelectedItemChanged"
+                  ItemsSource="{Binding Source={StaticResource ScenarioConfigXML}, XPath=*}">
+            <TreeView.Resources>
+                <ResourceDictionary>
+                    <ResourceDictionary.MergedDictionaries>
+                        <ResourceDictionary Source="TreeViewTemplates.xaml" />
+                    </ResourceDictionary.MergedDictionaries>
+                </ResourceDictionary>
+            </TreeView.Resources>
+        </TreeView>
+        <ContentControl x:Name="detailBox"
+                        Grid.Row="1"
+                        Content="{Binding ElementName=parameter_tree, Path=SelectedItem}">
+            <ContentControl.Resources>
+                <ResourceDictionary>
+                    <ResourceDictionary.MergedDictionaries>
+                        <ResourceDictionary Source="DetailsViewTemplates.xaml" />
+                    </ResourceDictionary.MergedDictionaries>
+                </ResourceDictionary>
+            </ContentControl.Resources>
+        </ContentControl>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Grid.Row="3">
+            <Button Grid.Row="2" Content="Add Element" Width="80" Click="addButton_Click" DockPanel.Dock="Bottom" Margin="6,0"/>
+            <Button Grid.Row="2" Content="Save" Width="80" Click="saveButton_Click"  DockPanel.Dock="Bottom"/>
+        </StackPanel>
+    </Grid>
+</Window>

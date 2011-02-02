@@ -1,0 +1,4 @@
+# Ignore these
+*.suo
+XmlTreeView2/obj/
+XmlTreeView2/bin/

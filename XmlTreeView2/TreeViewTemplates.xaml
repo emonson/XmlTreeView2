@@ -1,0 +1,58 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    
+    <!-- Starts every item out as expanded -->
+    <Style TargetType="{x:Type TreeViewItem}">
+        <Setter Property="IsExpanded" Value="true" />
+        <!-- root items can only be expanded, not selected -->
+        <!--<Style.Triggers>
+                <Trigger Property="HasItems" Value="true">
+                    <Setter Property="Focusable"
+                        Value="false" />
+                </Trigger>
+            </Style.Triggers>-->
+    </Style>
+
+
+    <HierarchicalDataTemplate DataType="SimConfiguration"
+                                  ItemsSource ="{Binding}">
+        <TextBlock Text="Simulation Config" />
+    </HierarchicalDataTemplate>
+    <HierarchicalDataTemplate DataType="scenario"
+                                  ItemsSource ="{Binding}">
+        <TextBlock Text="Scenario" />
+    </HierarchicalDataTemplate>
+    <HierarchicalDataTemplate DataType="parameters"
+                                  ItemsSource ="{Binding}">
+        <TextBlock Text="Parameters" />
+    </HierarchicalDataTemplate>
+    <HierarchicalDataTemplate DataType="force"
+                                  ItemsSource ="{Binding}">
+        <TextBlock Text="{Binding Path=Name}" />
+    </HierarchicalDataTemplate>
+
+    <DataTemplate DataType="delta">
+        <StackPanel Orientation="Horizontal">
+            <TextBlock Text="{Binding Path=Name}" />
+            <TextBlock Text=" : " />
+            <TextBlock Text="{Binding XPath=.}" />
+        </StackPanel>
+    </DataTemplate>
+    <DataTemplate DataType="description">
+        <StackPanel Orientation="Horizontal">
+            <TextBlock Text="{Binding Path=Name}" />
+            <TextBlock Text=" : " />
+            <TextBlock Text="{Binding XPath=.}" Width="150"/>
+        </StackPanel>
+    </DataTemplate>
+
+    <!-- Used for testing... -->
+    <HierarchicalDataTemplate x:Key="defaultTemplate"
+                                  ItemsSource="{Binding}">
+        <StackPanel Orientation="Horizontal">
+            <TextBlock Text="{Binding Path=Name}" />
+            <TextBlock Text=" : " />
+            <TextBlock Text="{Binding Path=Value}" />
+        </StackPanel>
+    </HierarchicalDataTemplate>
+</ResourceDictionary>
